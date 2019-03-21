@@ -1,0 +1,119 @@
+<div class="home-banner">
+  <div class="swiper-container" [swiper]="bannerConfig">
+    <div class="swiper-wrapper">
+      <img class="image swiper-slide" *ngFor="let image of bannerImages" [src]="assetPath+image" alt="">
+    </div>
+  </div>
+</div>
+<div class="separator"></div>
+<h1 class="heading">Today's Darshan</h1>
+<div class="background-wrapper">
+  <div class="today-darshan">
+    <div class="darshan-gallery">
+      <ngx-gallery [options]="galleryOptions" [images]="darshanImages"></ngx-gallery>
+    </div>
+  </div>
+</div>
+
+<div class="lecture-container">
+    <div class="row">
+        <div class="col">
+                  <div class="separator"></div>
+            <h1 class="heading">Today's Audio</h1>
+            <div class="today-audio">
+                <mat-card class="example-card">
+                  <mat-card-header>
+                    <mat-card-title>{{audioData?.title}}</mat-card-title>
+                    <mat-card-subtitle>{{audioData?.subTitle}}</mat-card-subtitle>
+                  </mat-card-header>
+                  <img [style.height]="'250px'" mat-card-image src="../../assets/banner-images/app-logo-460x460.jpg" alt="Photo of Bapuji">
+                  <mat-card-actions>
+                    <div class="audio-player" [style.text-align]="'center'">
+                      <audio #audio [style.width]="'95%'">
+                        <source src='' />
+                      </audio>
+                    </div>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+        </div>
+        <div class="col">
+                  <div class="separator"></div>
+            <h1 class="heading">Today's Video</h1>
+            <div class="today-video">
+                <iframe width="500px" height="400px" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/YdJbWgTthWA">
+                </iframe>
+              </div>
+        </div>
+      </div>
+</div>
+
+
+<!-- <div class="lecture-section">
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+        <div class="background-wrapper">
+          <div class="today-audio">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>{{audioData?.title}}</mat-card-title>
+                <mat-card-subtitle>{{audioData?.subTitle}}</mat-card-subtitle>
+              </mat-card-header>
+              <img [style.height]="'250px'" mat-card-image src="../../assets/banner-images/app-logo-460x460.jpg" alt="Photo of Bapuji">
+              <mat-card-actions>
+                <div class="audio-player" [style.text-align]="'center'">
+                  <audio #audio [style.width]="'95%'">
+                    <source src='' />
+                  </audio>
+                </div>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="background-wrapper">
+          <div class="today-video">
+            <iframe width="500px" height="400px" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/YdJbWgTthWA">
+            </iframe>
+          </div>
+        </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div> -->
+
+
+
+
+
+
+<div class="separator"></div>
+<h1 class="heading">Upcoming Events</h1>
+<div class="background-wrapper">
+  <div class="upcoming-events">
+    <div class="list">
+      <div class="list-item" *ngFor="let event of upcomingEvents">
+        <div class="left">
+          <div class="banner-image">
+            <img class='image' [src]="event.bannerUrl" alt="banner url">
+          </div>
+        </div>
+        <div class="right">
+          <div class="content">
+            <div class="date-time">
+              <span class="date-time-span">{{event.date}}</span>
+            </div>
+            <div class="event-title" (click)="goToDetail(event)">
+              <span class="title-span">{{event.title}}</span>
+            </div>
+            <div class="event-desc">
+              <p [innerHTML]="event.description | shorten: 300"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="show-all-button" mat-raised-button color="primary">Show All Events</button>
+</div>

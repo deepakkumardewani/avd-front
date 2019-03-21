@@ -1,0 +1,151 @@
+.navigation-title {
+  font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  margin-left: 15px;
+}
+.home-banner {
+  margin-top: 40px;
+  margin-bottom: 70px;
+
+  .swiper-container {
+    width: 98%;
+  }
+}
+
+.background-wrapper {
+  background-color: #FAFAFA;
+  margin: 0 auto;
+  width: 90vw;
+  margin-bottom: 70px;
+}
+
+.separator {
+  background: black;
+  width: 50px;
+  height: 6px;
+  margin-left: 60px;
+}
+.heading {
+  // text-align: center;
+  margin-left: 60px;
+  font-family: 'Montserrat', sans-serif;
+}
+.today-darshan {
+  .darshan-block {
+    .darshan-image {
+      padding: 15px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+  }
+  .darshan-gallery {
+    text-align: center;
+    padding: 10px;
+  }
+}
+.darshan-image {
+  padding: 15px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.lecture-container {
+  margin-bottom: 50px;
+  .today-audio {
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .today-video {
+    text-align: center;
+    iframe {
+      margin-top: 35px;
+    }
+  }
+}
+
+
+.upcoming-events {
+  .list {
+    margin-top: 15px;
+    width: 60em;
+    margin: 0 auto;
+
+    .list-item {
+      border-radius: 5px;
+      margin-bottom: 50px;
+      display: inline-flex;
+      border-radius: 5px;
+      margin-top: 30px;
+      background-color: #ffffff;
+      box-shadow: 0 0 2rem rgba(230, 182, 74, 0.24);
+      width: 60em;
+      height: 270px;
+      .left {
+        width: 280px;
+        height: 280px;
+      }
+
+      .right {
+        width: calc(100% - 280px);
+        height: 100%;
+
+        .content {
+          padding: 1rem 3.6rem;
+          .date-time {
+            font-family: 'Montserrat', sans-serif;
+            .date-time-span {
+              color: #4ca7ce;
+              font-weight: 600;
+              margin-bottom: 0.7rem;
+              font-size: 20px;
+              line-height: 1.44;
+            }
+          }
+          .event-title {
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 14px;
+            .title-span {
+              font-size: 26px;
+            }
+          }
+
+          .event-title:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+          .event-desc {
+            font-family: 'Karla', sans-serif;
+            font-weight: 400;
+            line-height: 1;
+          }
+        }
+      }
+
+      .banner-image {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+
+        .image {
+          width: 280px;
+          height: 270px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.show-all-button {
+  display: block;
+  margin: auto;
+}
+
+mat-grid-list {
+  height: 100em
+}
