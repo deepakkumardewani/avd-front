@@ -1,0 +1,40 @@
+.container {
+  margin-top: 50px;
+  .title, .mahamantra, .download {
+    text-align: center;
+    font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  }
+
+
+  .title {
+    font-size: 50px;
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+  }
+
+  .description {
+      color: #6a6a6a;
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 300;
+      width: 60em;
+      text-align: center;
+      margin: auto;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      font-family: 'Karla', sans-serif;
+  }
+  h3 {
+    font-size: 28px;
+      line-height: 1.2;
+      margin: 0px;
+  }
+
+  .hindi-download, .english-download {
+    text-align: center;
+    .link {
+      margin-bottom: 10px;
+    }
+  }
+}
