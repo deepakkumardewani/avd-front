@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title class="audio-title">{{data?.title}}</mat-card-title>
+  <mat-card-subtitle>{{data?.subTitle}}</mat-card-subtitle>
+  <div class="audio-player">
+    <audio #audio [style.width]="'95%'">
+        <source src='' />
+      </audio>
+</div>
+</mat-card>
+
