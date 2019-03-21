@@ -1,0 +1,14 @@
+
+
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let quote of quotes">
+    <mat-card class="example-card">
+      <img mat-card-image [src]="quote.url">
+      <mat-card-content>
+        <p>
+          {{quote.text}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
