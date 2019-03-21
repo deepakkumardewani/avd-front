@@ -1,0 +1,57 @@
+// * {
+//   font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+// }
+
+.banner {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  .image {
+    width: 98%;
+    height: 70%;
+  }
+}
+
+.body {
+  .title {
+    text-align: center;
+    font-size: 58px;
+    margin-bottom: 24px;
+    font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  }
+  .separator {
+    background: black;
+    width: 150px;
+    height: 3px;
+    margin: 0 auto;
+  }
+  .subtitle {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.8;
+    padding-bottom: 8px;
+    font-size: 18px;
+    color: #54606b;
+    clear: both;
+    font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  }
+  .middle-heading {
+    text-align: center;
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  }
+
+  .description {
+    padding-right: 25px;
+    padding-left: 25px;
+    font-size: 18px;
+    line-height: 25px;
+    font-family: 'Karla', sans-serif;
+  }
+}
