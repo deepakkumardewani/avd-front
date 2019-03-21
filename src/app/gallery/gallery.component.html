@@ -1,0 +1,9 @@
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let album of albums">
+    <mat-card>
+      <img class="album-image" mat-card-image src="../../assets/banner-images/app-logo-460x460.jpg" alt="">
+      <mat-card-title class="album-title">{{album?.title}}</mat-card-title>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
