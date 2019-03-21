@@ -1,0 +1,44 @@
+<div class="toolbar">
+  <mat-toolbar>
+    <h1 routerLink="/home" class="logo">Anand Vrindavan Dham</h1>
+
+    <span class="nav-buttons">
+      <!-- <button mat-button routerLinkActive="home-active" routerLink="/home">Home</button> -->
+      <!-- <button mat-button [matMenuTriggerFor]="smb">Shri Madhusudan Bapuji</button> -->
+
+      <ul>
+        <li routerLink="/home" class="one"><span>Home</span></li>
+        <li [matMenuTriggerFor]="smb"  class="two"><span>Shri Madhusudan Bapuji</span></li>
+        <li routerLink="/events" class="three"><span>Temple Events</span></li>
+        <li routerLink="/gallery" class="four"><span>Gallery</span></li>
+        <!-- <li routerLink="application" class="five"><span>Application</span></li> -->
+        <li routerLink="contact" class="six"><span>Contact Us</span></li>
+      </ul>
+
+      <mat-menu #smb="matMenu">
+        <button routerLink="/about" mat-menu-item>About</button>
+        <button routerLink="/lectures" mat-menu-item>Lectures</button>
+        <button routerLink="/books" mat-menu-item>Books</button>
+        <!-- <button routerLink="/quotes" mat-menu-item>Quotes</button> -->
+      </mat-menu>
+
+      <!-- <button mat-button routerLinkActive="events-active" routerLink="/events">Temple Events</button> -->
+
+      <!-- <button mat-button routerLinkActive="gallery-active" routerLink="/gallery" [matMenuTriggerFor]="gallery">Gallery</button> -->
+      <mat-menu #gallery="matMenu">
+        <button mat-menu-item>Photos</button>
+        <button mat-menu-item>Videos</button>
+        <!-- <button mat-menu-item>Lectures</button> -->
+      </mat-menu>
+
+      <!-- <button mat-button routerLinkActive="app-active" routerLink="application">Application</button> -->
+      <!-- <button mat-button routerLinkActive="contact-active" routerLink="contact">Contact Us</button> -->
+
+    </span>
+  </mat-toolbar>
+</div>
+
+<!-- <div class="title-heading">
+  <h1 class="navigation-title">{{title}}</h1>
+  <mat-divider></mat-divider>
+</div> -->

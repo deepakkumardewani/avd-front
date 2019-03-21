@@ -1,0 +1,105 @@
+.mat-menu-item {
+  outline-style:none !important;
+}
+
+.toolbar {
+  background: #eee;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100% !important;
+  z-index: 10;
+  // box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+
+  .logo {
+    font-size: 30px;
+    outline-style:none;
+    cursor: pointer;
+  }
+  .mat-toolbar {
+    background: white;
+  }
+  .nav-buttons {
+    margin-right: 45px;
+    margin-left: auto;
+    font-family: 'Roboto', sans-serif;
+
+    // mat-menu {
+    //   button.mat-menu-item {
+    //     outline-style:none;
+    //   }
+    // }
+
+
+    ul li {
+      display: inline;
+      text-align: center;
+      padding: 15px;
+      outline-style:none;
+    }
+
+
+    span {
+      display: inline-block;
+      // width: 25%;
+      font-size: 16px;
+      padding: .75rem 0;
+      margin: 0;
+      text-decoration: none;
+      // color: white;
+      color: black;
+    }
+
+    hr {
+      height: .25rem;
+      width: 25%;
+      margin: 0;
+      background: tomato;
+      border: none;
+      transition: .3s ease-in-out;
+    }
+
+    ul li span,
+    ul li span:after,
+    ul li span:before {
+      transition: all .5s;
+    }
+
+    ul li span:hover {
+      color: #555;
+      cursor: pointer;
+    }
+
+    /* stroke */
+    ul li span {
+      position: relative;
+    }
+
+    ul li span:after{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0%;
+      content: '.';
+      color: transparent;
+      background: #aaa;
+      height: 1px;
+    }
+
+    ul li span:hover:after {
+      width: 100%;
+    }
+  }
+
+  .home-active {
+    // color: red;
+    // background: white;
+  }
+}
+
+.navigation-title {
+  font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  margin-left: 15px;
+}
