@@ -1,0 +1,39 @@
+mat-card {
+  width: 200px;
+  height: 280px;
+
+  .audio-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .audio-image:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.audio-list {
+  margin-left: 30px !important;
+  .audio-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+mat-grid-list {
+  height: 100vh;
+  margin-top: 20px;
+  padding-bottom: 0 !important;
+}
+.video-grid {
+  width: 95%;
+}
+.video-container  {
+  width: 250px;
+  height: 280px;
+}
+
+.paginator {
+  text-align: center;
+}
