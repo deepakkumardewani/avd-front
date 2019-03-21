@@ -1,0 +1,18 @@
+<div class="banner-image">
+  <img src="https://avd-bapuji.sfo2.digitaloceanspaces.com/daily-darshan/WS-BANNER-4-1.jpg" alt="banner-image">
+</div>
+
+<div class="heading event-title">
+  <h1>{{event.title}}</h1>
+</div>
+<div class="separator"></div>
+<div class="description">
+  <p [innerHTML]="event.description"></p>
+</div>
+
+<div class="image-section" *ngIf="event?.imageUrls?.length !== 0">
+  <h1 class="heading">Images</h1>
+</div>
+<div class="video-section" *ngIf="event?.videoUrls?.length !== 0">
+  <h1 class="heading">Videos</h1>
+</div>
