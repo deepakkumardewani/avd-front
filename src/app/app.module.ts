@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { PipeModule } from '../app/pipe.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
@@ -18,11 +20,12 @@ import { HomeComponent } from './home/home.component';
 import { ApplicationComponent } from './application/application.component';
 import { AboutComponent } from './about/about.component';
 
-import { ShortenPipe } from './shorten.pipe';
+// import { ShortenPipe } from './shorten.pipe';
 
 import {
   LecturesComponent,
-  AudioDialogComponent
+  AudioDialogComponent,
+  VideoDialogComponent
 } from './lectures/lectures.component';
 import { BooksComponent } from './books/books.component';
 
@@ -54,9 +57,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AboutComponent,
     LecturesComponent,
     AudioDialogComponent,
+    VideoDialogComponent,
     BooksComponent,
-    QuotesComponent,
-    ShortenPipe
+    QuotesComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SwiperModule,
     HttpClientModule,
     NgxGalleryModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    PipeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -75,7 +81,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     },
     HelperService
   ],
-  entryComponents: [AudioDialogComponent],
+  entryComponents: [ AudioDialogComponent, VideoDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
