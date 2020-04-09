@@ -13,11 +13,12 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   assetPath = '../../assets/banner-images/';
-  bannerImages = ['SMB.jpg', 'RVC.jpg', 'Gaur-Nitai.jpg', 'Jagannath.jpg'];
+  bannerImages = ['SMB.jpg', 'RVC-1.jpg', 'Gaur-Nitai-1.jpg', 'Jagannath-1.jpg'];
   darshanImages = [];
   bannerConfig: SwiperConfigInterface = config.swiper.banner;
 
   audioData: any;
+  videoUrl: any;
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
           width: '500px',
           height: '500px',
           thumbnailsColumns: 5,
-          thumbnailsPercent: 10,
+          thumbnailsPercent: 20,
           // thumbnailsMargin: 10,
           // thumbnailMargin: 10,
           thumbnailsArrowsAutoHide: true,
@@ -48,10 +49,10 @@ export class HomeComponent implements OnInit {
       }
   ];
 
-    this.helper.getDailyDarshan().subscribe(result => {
-      this.darshanImages = result[0].imageUrls.map(url => {
+    this.helper.getDailyDarshan().subscribe((result: any) => {
+      this.darshanImages = result.imageUrls.map(image => {
         return {
-          small: url, medium: url, big: url
+          small: image.url, medium: image.url, big: image.url
         };
       });
     });
@@ -61,11 +62,14 @@ export class HomeComponent implements OnInit {
       this.audio.nativeElement.src = this.audioData.url;
     });
 
-    this.helper.getUpcomingEvents().subscribe(result => {
-      this.upcomingEvents = result;
-      console.log(this.upcomingEvents);
+    this.helper.getDailyVideo().subscribe((result: any) => {
+      this.videoUrl = this.helper.filterYoutubeVideoUrl(result.video.id);
 
     });
+
+    // this.helper.getUpcomingEvents().subscribe(result => {
+    //   this.upcomingEvents = result;
+    // });
   }
 
   goToDetail(event) {

@@ -1,11 +1,12 @@
 <div class="home-banner">
   <div class="swiper-container" [swiper]="bannerConfig">
     <div class="swiper-wrapper">
-      <img class="image swiper-slide" *ngFor="let image of bannerImages" [src]="assetPath+image" alt="">
+      <img class="home-banner-image swiper-slide" *ngFor="let image of bannerImages" [src]="assetPath+image" alt="">
     </div>
   </div>
 </div>
 <div class="separator"></div>
+<!-- DARSHAN -->
 <h1 class="heading">Today's Darshan</h1>
 <div class="background-wrapper">
   <div class="today-darshan">
@@ -17,6 +18,7 @@
 
 <div class="lecture-container">
     <div class="row">
+      <!-- AUDIOS -->
         <div class="col">
                   <div class="separator"></div>
             <h1 class="heading">Today's Audio</h1>
@@ -37,11 +39,12 @@
                 </mat-card>
               </div>
         </div>
+        <!-- VIDEOS -->
         <div class="col">
                   <div class="separator"></div>
             <h1 class="heading">Today's Video</h1>
             <div class="today-video">
-                <iframe width="500px" height="400px" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/YdJbWgTthWA">
+                <iframe width="500px" height="400px" frameborder="0" allowfullscreen [src]="videoUrl">
                 </iframe>
               </div>
         </div>
@@ -86,8 +89,8 @@
 
 
 
-
-<div class="separator"></div>
+<!-- EVENTS -->
+<!-- <div class="separator"></div>
 <h1 class="heading">Upcoming Events</h1>
 <div class="background-wrapper">
   <div class="upcoming-events">
@@ -116,4 +119,4 @@
   </div>
 
   <button class="show-all-button" mat-raised-button color="primary">Show All Events</button>
-</div>
+</div> -->
