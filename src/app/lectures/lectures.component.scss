@@ -27,13 +27,53 @@ mat-grid-list {
   padding-bottom: 0 !important;
 }
 .video-grid {
-  width: 95%;
+  width: 100%;
 }
 .video-container  {
   width: 250px;
   height: 280px;
+  .content {
+    .title {
+      color: #030303;
+      font-weight: bold;
+    }
+    .views, .publishedAt {
+      color: #606060;
+    }
+  }
 }
 
+.video-container:hover {
+  cursor: pointer;
+}
 .paginator {
   text-align: center;
 }
+
+.thumbnail {
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1.5em;
+    text-align: center;
+    font: 40px/1.5 sans-serif;
+    color: white;
+    text-shadow: 0 0 0.5em black;
+  }
+}
+.views::after {
+  content: '•';
+  margin: 7px;
+}
+
+.views-date {
+  display: inline-flex;
+}
+

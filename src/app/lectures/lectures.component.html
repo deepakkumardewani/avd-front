@@ -1,47 +1,59 @@
 <mat-divider></mat-divider>
-<mat-tab-group class="example-stretched-tabs mat-elevation-z4">
+<mat-tab-group>
+  <!-- AUDIO TAB -->
   <mat-tab label="Audio">
+
     <div class="paginator">
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <pagination-controls id="audio" (pageChange)="getPage($event, 'audio')"></pagination-controls>
     </div>
-    <!-- <mat-grid-list cols="4">
-      <mat-grid-tile *ngFor="let audio of audios | paginate: { itemsPerPage: 10, currentPage: page }">
-        <mat-card>
-          <img class="audio-image" mat-card-image (click)="openDialog(audio)" src="../../assets/banner-images/app-logo-460x460.jpg" alt="">
-          <mat-card-title (click)="openDialog(audio)" class="audio-title">{{audio?.title}}</mat-card-title>
-          <mat-card-subtitle>{{audio?.subTitle}}</mat-card-subtitle>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list> -->
+    <div *ngIf="audioLoading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
     <mat-list class="audio-list">
-      <mat-list-item *ngFor="let audio of audios | paginate: { itemsPerPage: 10, currentPage: page }">
+      <mat-list-item *ngFor="let audio of audios | paginate: { id: 'audio', itemsPerPage: 30, currentPage: audioPage, totalItems: audioTotal }">
         <img matListAvatar src="../../assets/banner-images/app-logo-460x460.jpg" alt="bapuji-img">
-        <h3 class="audio-title" (click)="openDialog(audio)" matLine> {{audio?.title}} </h3>
+        <h3 class="audio-title" (click)="openDialog(audio, 'audio')" matLine> {{audio?.title}} </h3>
         <p matLine>
           <span [style.color]="'gray'"> {{audio?.subTitle}} </span>
         </p>
       </mat-list-item>
     </mat-list>
   </mat-tab>
+
+  <!-- VIDEO TAB -->
   <mat-tab label="Video">
+    <div *ngIf="!videoLoading" class="paginator">
+      <pagination-controls id="video" (pageChange)="getPage($event, 'video')"></pagination-controls>
+    </div>
+    <div *ngIf="videoLoading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
     <mat-grid-list cols="4" class="video-grid">
-      <mat-grid-tile *ngFor="let video of videos">
-        <div class="video-container">
+      <mat-grid-tile *ngFor="let video of videos | paginate: { id: 'video', itemsPerPage: 30, currentPage: videoPage, totalItems: videoTotal }">
+        <div (click)="openDialog(video, 'video')" class="video-container">
           <div class="thumbnail">
-            <iframe [src]="video?.videoUrl" frameborder="0" allowfullscreen></iframe>
+            <span class="play-button">▶</span>
+            <img [src]="video?.thumbnail" alt="video thumbnail">
           </div>
           <div class="content">
             <div class="title">
-              <span>{{video?.title}}</span>
+              <span>{{video?.title | shorten: 50}}</span>
             </div>
-            <div class="views">
-              <span>{{video?.viewCount}}</span>
+            <div class="views-date">
+              <div class="views">
+                <span>{{video?.viewCount | shortNumber}} views</span>
+              </div>
+              <div class="publishedAt">
+                <span>{{video?.publishedAt | dateAgo}}</span>
+              </div>
             </div>
           </div>
         </div>
-
       </mat-grid-tile>
     </mat-grid-list>
-
   </mat-tab>
 </mat-tab-group>
