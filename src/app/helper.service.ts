@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {
-  catchError
-} from 'rxjs/operators';
-
-
+import { HttpClient } from '@angular/common/http';
+import {DomSanitizer} from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 const { YOUTUBE_KEY, PLAYLIST_ID } = environment;
@@ -19,11 +14,14 @@ export class HelperService {
   dailyDarshanUrl = `${environment.serverUrl}/photos/dailyDarshan`;
   dailyAudioUrl = `${environment.serverUrl}/lectures/audio/daily`;
   allAudioUrl = `${environment.serverUrl}/lectures/audio`;
+  videoUrl = `${environment.serverUrl}/lectures/video`;
+  dailVideoUrl = `${environment.serverUrl}/lectures/video/daily`;
   quotesUrl = `${environment.serverUrl}/quotes`;
   eventsUrl = `${environment.serverUrl}/events`;
   upcomingEventsUrl = `${environment.serverUrl}/events?limit=3`;
+  contactUsUrl = `${environment.serverUrl}/contact`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public sanitizer: DomSanitizer) { }
 
   getDailyDarshan() {
     return this.http.get(this.dailyDarshanUrl);
@@ -33,8 +31,11 @@ export class HelperService {
     return this.http.get(this.dailyAudioUrl);
   }
 
-  getAllAudio() {
-    return this.http.get(this.allAudioUrl);
+  getAllAudio(page?: number) {
+    if (page) {
+      return this.http.get(`${this.allAudioUrl}?page=${page}`);
+    }
+    // return this.http.get(this.allAudioUrl);
   }
 
   getQuotes() {
@@ -49,9 +50,14 @@ export class HelperService {
     return this.http.get(this.upcomingEventsUrl);
   }
 
-  getVideoList() {
+  getVideoList(token: string) {
     // tslint:disable-next-line:max-line-length
-    return this.http.get(`${environment.youtubeUrl}playlistItems?part=snippet,contentDetails&maxResults=20&playlistId=${PLAYLIST_ID}&key=${YOUTUBE_KEY}`);
+    return this.http.post(this.videoUrl, { token });
+    // return this.http.get(`${environment.youtubeUrl}playlistItems?part=snippet,contentDetails&maxResults=30&playlistId=${PLAYLIST_ID}&key=${YOUTUBE_KEY}`, { token });
+  }
+
+  getDailyVideo() {
+    return this.http.get(this.dailVideoUrl);
   }
 
   getVideoById(id: string) {
@@ -75,5 +81,13 @@ export class HelperService {
     if (window.localStorage) {
       localStorage.removeItem('event');
     }
+  }
+
+  filterYoutubeVideoUrl(id) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${id}`);
+  }
+
+  submitContactUs(data) {
+    return this.http.post(this.contactUsUrl, {data});
   }
 }
