@@ -1,3 +1,49 @@
-<p>
-  contact works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="contactForm" class="user-form">
+        <mat-form-field class="example-full-width">
+          <!-- <input name="name" [(ngModel)]="name" matInput placeholder="Full Name" value=""> -->
+          <mat-label>Name</mat-label>
+          <input name="name" matInput formControlName="name" placeholder="Name">
+          <mat-error *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- <mat-form-field class="example-full-width">
+          <input [(ngModel)]="email" matInput placeholder="Email" value="">
+        </mat-form-field> -->
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input name="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+        <mat-label>Message</mat-label>
+          <input name="name" matInput formControlName="message" placeholder="Message">
+          <mat-error *ngIf="contactForm.controls['message'].invalid && (contactForm.controls['message'].dirty || contactForm.controls['message'].touched)">
+            Message is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+      <button [disabled]="!isValid() || isSubmitDisabled" (click)="submit()" mat-raised-button color="primary">Submit</button>
+
+      <div *ngIf="showAlert" class="alert alert-success" role="alert">
+        Thank you. Your message has been received!
+        We will get back to you shortly.
+      </div>
+    </div>
+    <div class="col">
+      <!-- <img src="assets/yt.png" alt="jagannath image"> -->
+    </div>
+  </div>
+</div>
