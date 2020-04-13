@@ -22,11 +22,11 @@
   background: black;
   width: 50px;
   height: 6px;
-  margin-left: 60px;
+  margin-left: 20px;
 }
 .heading {
   // text-align: center;
-  margin-left: 60px;
+  margin-left: 20px;
   font-family: 'Montserrat', sans-serif;
 }
 .today-darshan {
@@ -50,22 +50,31 @@
   object-fit: cover;
 }
 
+.audio-card {
+  max-width: 400px;
+}
 .lecture-container {
   margin-bottom: 50px;
-  .today-audio {
-    width: 400px;
-    height: 500px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-  }
 
-  .today-video {
-    text-align: center;
-    iframe {
-      margin-top: 35px;
-    }
+  .row {
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
+  // .today-audio {
+  //   width: 400px;
+  //   height: 500px;
+  //   margin: 0 auto;
+  //   display: flex;
+  //   align-items: center;
+
+  // }
+
+  // .today-video {
+  //   text-align: center;
+  //   iframe {
+  //     margin-top: 35px;
+  //   }
+  // }
 }
 
 
@@ -152,4 +161,18 @@
 
 mat-grid-list {
   height: 100em
+}
+
+.bg-wrap {
+  background-color: #FAFAFA;
+  margin: 0 auto;
+  width: 90vw;
+  padding: 20px;
+}
+@media all and ( min-width: 560px ) {
+  .div_style {
+      width:560px;
+      height: 310px;
+      // padding-bottom:315px !important;
+  }
 }

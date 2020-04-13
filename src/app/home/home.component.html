@@ -20,15 +20,15 @@
     <div class="row">
       <!-- AUDIOS -->
         <div class="col">
-                  <div class="separator"></div>
+            <div class="separator"></div>
             <h1 class="heading">Today's Audio</h1>
-            <div class="today-audio">
-                <mat-card class="example-card">
+            <div class="bg-wrap container-fluid d-flex justify-content-center">
+                <mat-card class="audio-card">
                   <mat-card-header>
                     <mat-card-title>{{audioData?.title}}</mat-card-title>
                     <mat-card-subtitle>{{audioData?.subTitle}}</mat-card-subtitle>
                   </mat-card-header>
-                  <img [style.height]="'250px'" mat-card-image src="../../assets/banner-images/app-logo-460x460.jpg" alt="Photo of Bapuji">
+                  <img [style.height]="'330px'" mat-card-image src="../../assets/banner-images/app-logo-460x460.jpg" alt="Photo of Bapuji">
                   <mat-card-actions>
                     <div class="audio-player" [style.text-align]="'center'">
                       <audio #audio [style.width]="'95%'">
@@ -39,15 +39,19 @@
                 </mat-card>
               </div>
         </div>
-        <!-- VIDEOS -->
-        <div class="col">
+      </div>
+      <div class="row">
+                <!-- VIDEOS -->
+                <div class="col">
                   <div class="separator"></div>
-            <h1 class="heading">Today's Video</h1>
-            <div class="today-video">
-                <iframe width="500px" height="400px" frameborder="0" allowfullscreen [src]="videoUrl">
-                </iframe>
+                  <h1 class="heading">Today's Video</h1>
+                  <div class="bg-wrap container-fluid d-flex justify-content-center">
+                    <div class="embed-responsive embed-responsive-21by9 div_style">
+                        <iframe allowfullscreen [src]="videoUrl">
+                        </iframe>
+                      </div>
+                  </div>
               </div>
-        </div>
       </div>
 </div>
 

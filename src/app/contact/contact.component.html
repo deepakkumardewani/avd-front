@@ -3,17 +3,12 @@
     <div class="col">
       <form [formGroup]="contactForm" class="user-form">
         <mat-form-field class="example-full-width">
-          <!-- <input name="name" [(ngModel)]="name" matInput placeholder="Full Name" value=""> -->
           <mat-label>Name</mat-label>
           <input name="name" matInput formControlName="name" placeholder="Name">
           <mat-error *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)">
             Name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-
-        <!-- <mat-form-field class="example-full-width">
-          <input [(ngModel)]="email" matInput placeholder="Email" value="">
-        </mat-form-field> -->
 
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
@@ -42,8 +37,11 @@
         We will get back to you shortly.
       </div>
     </div>
+
     <div class="col">
-      <!-- <img src="assets/yt.png" alt="jagannath image"> -->
+      <div class="image container-fluid d-flex justify-content-center">
+        <img src="assets/mor-pankh.png" alt="jagannath image">
+      </div>
     </div>
   </div>
 </div>

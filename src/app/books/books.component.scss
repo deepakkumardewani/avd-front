@@ -18,9 +18,9 @@
       font-size: 18px;
       line-height: 1.6;
       font-weight: 300;
-      width: 60em;
-      text-align: center;
-      margin: auto;
+      // width: 60em;
+      // text-align: center;
+      // margin: auto;
       margin-top: 15px;
       margin-bottom: 20px;
       font-family: 'Karla', sans-serif;
@@ -31,10 +31,17 @@
       margin: 0px;
   }
 
-  .hindi-download, .english-download {
+  .hindi, .english {
     text-align: center;
     .link {
       margin-bottom: 10px;
     }
+  }
+
+  .row {
+    margin: 10px 10px;
+  }
+  .col {
+    margin-bottom: 10px;
   }
 }

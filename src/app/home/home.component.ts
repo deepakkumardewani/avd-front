@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   assetPath = '../../assets/banner-images/';
-  bannerImages = ['SMB.jpg', 'RVC-1.jpg', 'Gaur-Nitai-1.jpg', 'Jagannath-1.jpg'];
+  bannerImages = ['SMB.jpg', 'RVC-1.jpg', 'Gaur-Nitai-1.jpg'];
   darshanImages = [];
   bannerConfig: SwiperConfigInterface = config.swiper.banner;
 
@@ -46,6 +46,23 @@ export class HomeComponent implements OnInit {
           imageAnimation: NgxGalleryAnimation.Fade,
           previewFullscreen: true,
           previewKeyboardNavigation: true
+      },
+      // max-width 800
+      {
+          breakpoint: 800,
+          imageSwipe: true,
+          width: '100%',
+          height: '300px',
+          // imagePercent: 80,
+          thumbnailsPercent: 20,
+          thumbnailsColumns: 4,
+          // thumbnailsMargin: 20,
+          // thumbnailMargin: 20
+      },
+      // max-width 400
+      {
+          breakpoint: 400,
+          preview: true
       }
   ];
 
