@@ -8,6 +8,11 @@ body {
   margin: 0;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 // .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
 //   transform: none !important;
 // }
@@ -15,4 +20,9 @@ body {
 
 .audio-dialog .mat-dialog-container, .video-dialog mat-dialog-container {
   padding: 0;
+}
+
+
+.nav-item {
+  cursor: pointer;
 }
