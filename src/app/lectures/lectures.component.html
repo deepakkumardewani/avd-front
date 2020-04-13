@@ -32,9 +32,21 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <mat-grid-list cols="4" class="video-grid">
+
+    <!-- <div class="card-columns">
+      <div class="card" *ngFor="let video of videos | paginate: { id: 'video', itemsPerPage: 30, currentPage: videoPage, totalItems: videoTotal }">
+        <img class="card-img-top" [src]="video?.thumbnail" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{video?.title | shorten: 50}}</h5>
+          <p class="card-text">{{video?.viewCount | shortNumber}} views</p>
+        </div>
+      </div>
+    </div> -->
+
+
+    <mat-grid-list [cols]="isMobile ? 1 : 4" [rowHeight]="isMobile ? 320 : 270" class="video-grid">
       <mat-grid-tile *ngFor="let video of videos | paginate: { id: 'video', itemsPerPage: 30, currentPage: videoPage, totalItems: videoTotal }">
-        <div (click)="openDialog(video, 'video')" class="video-container">
+        <div (click)="openDialog(video, 'video')" [ngClass]="{ 'desktop': !isMobile }" class="video-container">
           <div class="thumbnail">
             <span class="play-button">▶</span>
             <img [src]="video?.thumbnail" alt="video thumbnail">

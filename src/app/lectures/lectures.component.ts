@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ElementRef, ViewChild } from '@angular/core'
 import { HelperService } from './../helper.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 export interface AudioDialogData {
   title: string;
@@ -93,17 +94,20 @@ export class LecturesComponent implements OnInit {
 
   token = '';
 
+  isMobile: boolean;
+
   constructor(
     private helper: HelperService,
     public dialog: MatDialog,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private deviceService: DeviceDetectorService
     ) {}
 
   async ngOnInit() {
     // this.loading = true;
+    this.isMobile = this.deviceService.isMobile();
     this.getPage(1, 'audio');
     this.getPage(1, 'video');
-
     // this.getVideos();
     // this.helper.getVideoList().subscribe((result: any) => {
     //   this.videos = result.items;
@@ -138,6 +142,7 @@ export class LecturesComponent implements OnInit {
       });
     }
     if (type === 'video') {
+      this.videoLoading = true;
       this.getVideos();
       this.videoPage = page;
     }

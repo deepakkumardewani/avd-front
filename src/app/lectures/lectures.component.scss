@@ -14,7 +14,7 @@ mat-card {
 }
 
 .audio-list {
-  margin-left: 30px !important;
+  // margin-left: 30px !important;
   .audio-title:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -30,9 +30,11 @@ mat-grid-list {
   width: 100%;
 }
 .video-container  {
-  width: 250px;
-  height: 280px;
+  // width: 250px;
+  // height: 280px;
+  width: 100%;
   .content {
+    padding: 10px;
     .title {
       color: #030303;
       font-weight: bold;
@@ -41,6 +43,11 @@ mat-grid-list {
       color: #606060;
     }
   }
+}
+
+.desktop {
+  width: 250px;
+  height: 280px;
 }
 
 .video-container:hover {
@@ -76,4 +83,20 @@ mat-grid-list {
 .views-date {
   display: inline-flex;
 }
+
+
+.card {
+  border: 0;
+  width: 250px;
+  height: 280px;
+}
+
+@media (min-width: 62em) {
+  .card-columns {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+  }
+}
+
 

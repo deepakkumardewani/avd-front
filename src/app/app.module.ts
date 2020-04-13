@@ -37,6 +37,7 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -72,7 +73,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NgxPaginationModule,
     PipeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [
     {
