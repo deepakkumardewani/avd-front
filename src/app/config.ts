@@ -67,5 +67,15 @@ export const config = {
       image: 'SMB.jpg',
       date: 'Friday, March 1, 2019 / 8:00 AM : 1:00 PM'
     }
-  ]
+  ],
+  firebase: {
+    apiKey: 'AIzaSyC_lFughRywTX7uuhsTWkQMACXp7VsZkxk',
+    authDomain: 'anand-vrindavan-dham.firebaseapp.com',
+    databaseURL: 'https://anand-vrindavan-dham.firebaseio.com',
+    projectId: 'anand-vrindavan-dham',
+    storageBucket: 'anand-vrindavan-dham.appspot.com',
+    messagingSenderId: '495744037404',
+    appId: '1:495744037404:web:dfdab183f6734201dd65d9',
+    measurementId: 'G-Y56XS84KYG'
+  }
 };

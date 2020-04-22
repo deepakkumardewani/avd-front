@@ -38,6 +38,10 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+
+import { config } from './config'
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -74,7 +78,11 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     PipeModule,
     FormsModule,
     ReactiveFormsModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    AngularFireModule.initializeApp(config.firebase),
+    AngularFireAnalyticsModule
+
+
   ],
   providers: [
     {
