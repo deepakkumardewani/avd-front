@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  assetPath = '../../assets/banner-images/';
+  assetPath = 'assets/banner-images/';
   bannerImages = ['SMB.jpg', 'RVC-1.jpg', 'Gaur-Nitai-1.jpg'];
   darshanImages = [];
   bannerConfig: SwiperConfigInterface = config.swiper.banner;
