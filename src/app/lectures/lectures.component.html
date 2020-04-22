@@ -1,5 +1,5 @@
 <mat-divider></mat-divider>
-<mat-tab-group>
+<mat-tab-group [(selectedIndex)]="selectedIndex">
   <!-- AUDIO TAB -->
   <mat-tab label="Audio">
 
@@ -46,26 +46,38 @@
 
     <mat-grid-list [cols]="isMobile ? 1 : 4" [rowHeight]="isMobile ? 320 : 270" class="video-grid">
       <mat-grid-tile *ngFor="let video of videos | paginate: { id: 'video', itemsPerPage: 30, currentPage: videoPage, totalItems: videoTotal }">
-        <div (click)="openDialog(video, 'video')" [ngClass]="{ 'desktop': !isMobile }" class="video-container">
-          <div class="thumbnail">
+        <div [ngClass]="{ 'desktop': !isMobile }" class="video-container">
+          <div class="thumbnail" (click)="openDialog(video, 'video')">
             <span class="play-button">▶</span>
             <img [src]="video?.thumbnail" alt="video thumbnail">
           </div>
           <div class="content">
-            <div class="title">
-              <span>{{video?.title | shorten: 50}}</span>
-            </div>
-            <div class="views-date">
-              <div class="views">
-                <span>{{video?.viewCount | shortNumber}} views</span>
+            <div class="title-date">
+              <div class="title" (click)="openDialog(video, 'video')">
+                <span>{{video?.title | shorten: 50}}</span>
               </div>
-              <div class="publishedAt">
-                <span>{{video?.publishedAt | dateAgo}}</span>
+              <div class="views-date">
+                <div class="views">
+                  <span>{{video?.viewCount | shortNumber}} views</span>
+                </div>
+                <div class="publishedAt">
+                  <span>{{video?.publishedAt | dateAgo}}</span>
+                </div>
               </div>
             </div>
+            <div class="share-btn" [matMenuTriggerFor]="menu">
+              <span mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </span>
+            </div>
+            <mat-menu #menu="matMenu">
+              <span (click)="copyLink(video.id)" mat-menu-item>Copy Link</span>
+            </mat-menu>
           </div>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-tab>
 </mat-tab-group>
+
+

@@ -3,6 +3,8 @@ import { HelperService } from './../helper.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 export interface AudioDialogData {
   title: string;
@@ -95,39 +97,33 @@ export class LecturesComponent implements OnInit {
   token = '';
 
   isMobile: boolean;
+  selectedIndex = 0;
 
   constructor(
     private helper: HelperService,
     public dialog: MatDialog,
     public sanitizer: DomSanitizer,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private router: Router,
+    private route: ActivatedRoute
     ) {}
 
   async ngOnInit() {
-    // this.loading = true;
     this.isMobile = this.deviceService.isMobile();
     this.getPage(1, 'audio');
     this.getPage(1, 'video');
-    // this.getVideos();
-    // this.helper.getVideoList().subscribe((result: any) => {
-    //   this.videos = result.items;
-    //   this.videoIdArray = this.videos.map(video => {
-    //     return video.snippet.resourceId.videoId;
-    //   });
 
-    //   this.helper.getVideoById(this.videoIdArray.join(',')).subscribe((response: any) => {
-    //     this.videos = response.items.map(video => {
-    //         return {
-    //       title: video.snippet.title,
-    //       thumbnail: video.snippet.thumbnails.medium.url,
-    //       videoUrl: this.videoURL(video.id),
-    //       viewCount: video.statistics.viewCount,
-    //       duration: video.contentDetails.duration,
-    //       publishedAt: video.snippet.publishedAt
-    //     };
-    //     });
-    //   });
-    // });
+    if (this.router.url.includes('/audio')) {
+      this.selectedIndex = 0;
+    } else if (this.router.url.includes('/video')) {
+      this.selectedIndex = 1;
+      this.route.params.subscribe(params => {
+        if (params && params.id) {
+          const data = { id: params.id };
+          this.openDialog(data, 'video');
+        }
+      });
+    }
   }
 
   getPage(page: number, type: string) {
@@ -158,28 +154,6 @@ export class LecturesComponent implements OnInit {
       this.videoTotal = result.totalResults;
       this.videos = result.videos;
       this.videoLoading = false;
-
-      // this.videoIdArray = this.videos.map(video => {
-      //   return video.snippet.resourceId.videoId;
-      // });
-
-      // this.helper.getVideoById(this.videoIdArray.join(',')).subscribe((response: any) => {
-      //   this.videoLoading = false;
-      //   console.log(this.videoLoading);
-
-      //   this.videos = response.items.map(video => {
-      //       return {
-      //     title: video.snippet.title,
-      //     thumbnail: video.snippet.thumbnails.medium.url,
-      //     videoUrl: this.helper.filterYoutubeVideoUrl(video.id),
-      //     viewCount: video.statistics.viewCount,
-      //     duration: video.contentDetails.duration,
-      //     publishedAt: video.snippet.publishedAt
-      //   };
-      //   });
-      //   console.log(this.videos);
-
-      // });
     });
   }
   openDialog(data, type): void {
@@ -210,6 +184,20 @@ export class LecturesComponent implements OnInit {
       //   console.log('The dialog was closed');
       // });
     }
+  }
 
+  copyLink(id) {
+    const url = `${environment.domainUrl}/lectures/video/${id}`;
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = url;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }

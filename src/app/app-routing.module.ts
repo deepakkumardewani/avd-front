@@ -22,6 +22,9 @@ const routes: Routes = [
   { path: 'application', component: ApplicationComponent, data: {title: 'Application'} },
   { path: 'contact', component: ContactComponent, data: {title: 'Contact'} },
   { path: 'lectures', component: LecturesComponent, data: {title: 'Lectures'} },
+  { path: 'lectures/audio', component: LecturesComponent, data: {title: 'Lectures'} },
+  { path: 'lectures/video', component: LecturesComponent, data: {title: 'Lectures'} },
+  { path: 'lectures/video/:id', component: LecturesComponent, data: {title: 'Lectures'} },
   { path: 'books', component: BooksComponent, data: {title: 'Books'} },
   { path: '**', redirectTo: 'home' }
 ];
