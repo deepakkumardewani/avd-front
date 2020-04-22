@@ -1,5 +1,5 @@
 <mat-divider></mat-divider>
-<mat-tab-group [(selectedIndex)]="selectedIndex">
+<mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChanged($event)">
   <!-- AUDIO TAB -->
   <mat-tab label="Audio">
 

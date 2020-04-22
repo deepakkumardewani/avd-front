@@ -4,6 +4,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
+
 import { environment } from 'src/environments/environment';
 
 export interface AudioDialogData {
@@ -105,17 +107,24 @@ export class LecturesComponent implements OnInit {
     public sanitizer: DomSanitizer,
     private deviceService: DeviceDetectorService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
     ) {}
 
   async ngOnInit() {
+    this.location.replaceState('/lectures/audio');
     this.isMobile = this.deviceService.isMobile();
     this.getPage(1, 'audio');
     this.getPage(1, 'video');
 
+    if (!this.router.url.includes('/audio') && !this.router.url.includes('/video')) {
+      this.location.replaceState('/lectures/audio');
+    }
+
     if (this.router.url.includes('/audio')) {
       this.selectedIndex = 0;
     } else if (this.router.url.includes('/video')) {
+      this.location.replaceState('/lectures/video');
       this.selectedIndex = 1;
       this.route.params.subscribe(params => {
         if (params && params.id) {
@@ -199,5 +208,13 @@ export class LecturesComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  onTabChanged(event) {
+    if (event.index === 0) {
+      this.location.replaceState('/lectures/audio');
+    } else {
+      this.location.replaceState('/lectures/video');
+    }
   }
 }
